@@ -1,0 +1,40 @@
+<?php
+    include('../DBConnection.php');
+    session_start();
+    $_SESSION['auth']=0;
+    $_SESSION['id']=0;
+
+    if(isset($_POST['login'])){
+        $username=$_POST['username'];
+        $password=$_POST['password'];
+        $check_auth=check_login($conn,$username,$password);
+    }
+    function check_login($conn,$username,$password){
+        $query="SELECT * FROM staff WHERE staff_email=".'"'.$username.'"'." and staff_password=".'"'.$password.'"';
+        $exec=mysqli_query($conn,$query);
+        $account=mysqli_fetch_assoc($exec);
+        if(mysqli_num_rows($exec)>0&&$account['staff_position']=="เจ้าของร้าน"){
+            $_SESSION['auth']="1";
+            $_SESSION['id']=$account['staff_id'];
+            header('location:../staffmanagement/staffmanagement.php');
+        }elseif(mysqli_num_rows($exec)>0&&$account['staff_position']=="ผู้จัดการร้าน"){
+            $_SESSION['auth']="2";
+            $_SESSION['id']=$account['staff_id'];
+            header('location:../staffmanagement/staffmanagement.php');
+        }elseif(mysqli_num_rows($exec)>0&&$account['staff_position']=="พนักงานคิดเงิน"){
+            $_SESSION['auth']="3";
+            $_SESSION['id']=$account['staff_id'];
+            header('location:../payment/payment.php');
+        }elseif(mysqli_num_rows($exec)>0&&$account['staff_position']=="พนักงานครัว"){
+            $_SESSION['auth']="4";
+            $_SESSION['id']=$account['staff_id'];
+            header('location:../orderlist/orderlist.php');
+        }elseif(mysqli_num_rows($exec)>0&&$account['staff_position']=="บริกร"){
+            $_SESSION['auth']="5";
+            $_SESSION['id']=$account['staff_id'];
+            header('location:../createorder/createorder.php');
+        }else{
+            header("location:login_fail.php");
+        }
+    }
+?>

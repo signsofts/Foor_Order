@@ -1,0 +1,55 @@
+body{
+    background-color: #4E73DF;
+}
+h1{
+    font-family: Poppins;
+    font-size: 32px;
+    color: #4E73DF;
+    margin-left: 18px;
+    margin-top: 20px;
+}
+.search-bt{
+    margin-top: 20px;
+    width: 416px;
+    height: 25px;
+    margin-right: 25px;
+}
+.content{
+    background-color: #E6E6E6;
+}
+.sidebar{
+    width: 285px;
+    margin-top: 29px;
+    margin-left: 20px;
+}
+.sidebar_bt{
+    font-family: Poppins;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-left: 10px;
+    margin-bottom: auto;
+}
+.bt_logo{
+    width: 35px;
+    height: 32.12px;
+}
+hr{
+    color: #F4F4F8;
+    margin-top: 10px;
+}
+.content{
+    background-color: #E6E6E6;
+    width: 1180px;
+    height: 675px;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-top: 24px;
+}
+.content_detail{
+    background-color: #FFFFFF;
+    width: 1140px;
+    height: 575px;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
